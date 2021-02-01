@@ -154,6 +154,16 @@ jobs:
         OCAML_VERSION: ${{ matrix.ocamlv }}
       run: bash -exu .github/scripts/main.sh
 
+  cold-macos:
+    runs-on: [ macos-latest ]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Ulimit
+      run:
+    - name: Cold
+      run: |
+        make cold
+
   cold:
     needs: [ build, archives-cache ]
     runs-on: ${{ matrix.os }}
