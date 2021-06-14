@@ -142,6 +142,7 @@ if [ -n "$1" -a -n "${COMSPEC}" -a -x "${COMSPEC}" ] ; then
 else
   PREFIX=`cd .. ; pwd`/ocaml
   if [ ${GEN_CONFIG_ONLY} -eq 0 ] ; then
+    patch Makefile -i ../../remove-version.patch
     ./configure -prefix "${PREFIX}"
     ${MAKE:-make} world opt.opt
     ${MAKE:-make} install
